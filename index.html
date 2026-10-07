@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="logo.jpeg">
+
+    <title>I am Sorry Jadee</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            background: #0f0b14;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           COMMON
+        ========================== */
+
+        section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .container {
+            width: min(1000px, 92%);
+            margin: auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            color: #d7cbd9;
+            max-width: 650px;
+            margin: 0 auto 50px;
+            line-height: 1.8;
+        }
+
+        .btn {
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            background: #ff4f81;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 79, 129, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            background: #ff346d;
+        }
+
+        /* =========================
+           FLOATING HEARTS
+        ========================== */
+
+        .hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 999;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 20px;
+            animation: floatHeart linear forwards;
+            opacity: 0.8;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            background:
+                radial-gradient(circle at top left, #6d1641, transparent 40%),
+                radial-gradient(circle at bottom right, #30104e, transparent 40%),
+                #0f0b14;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .small-text {
+            color: #ff8eae;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 7rem);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #ff4f81;
+        }
+
+        .hero p {
+            color: #d8ccd9;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 650px;
+            margin: 0 auto 35px;
+        }
+
+        .scroll-text {
+            margin-top: 50px;
+            color: #887b8a;
+            font-size: 0.8rem;
+        }
+
+        /* =========================
+           APOLOGY
+        ========================== */
+
+        .apology {
+            background: linear-gradient(180deg, #0f0b14, #180d19);
+        }
+
+        .apology-card {
+            max-width: 750px;
+            margin: auto;
+            padding: 45px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .apology-card p {
+            color: #ded4df;
+            line-height: 2;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #ff759a;
+            font-weight: bold;
+        }
+
+        /* =========================
+           MEMORIES
+        ========================== */
+
+        .memories {
+            background: #120c17;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ff4f81;
+            transform: translateX(-50%);
+        }
+
+        .memory {
+            width: 50%;
+            padding: 20px;
+            position: relative;
+        }
+
+        .memory:nth-child(odd) {
+            text-align: right;
+        }
+
+        .memory:nth-child(even) {
+            margin-left: 50%;
+        }
+
+        .memory-card {
+            padding: 25px;
+            background: #1d1420;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+        }
+
+        .memory-card h3 {
+            color: #ff7397;
+            margin-bottom: 10px;
+        }
+
+        .memory-card p {
+            color: #bfb3c1;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           LOVE CARDS
+        ========================== */
+
+        .love {
+            background: linear-gradient(180deg, #120c17, #1a0d18);
+        }
+
+        .love-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .love-card {
+            min-height: 180px;
+            padding: 30px 20px;
+            background: #211522;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .love-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff4f81;
+            box-shadow: 0 15px 40px rgba(255,79,129,0.15);
+        }
+
+        .love-card .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .love-card p {
+            color: #d5cbd7;
+        }
+
+        /* =========================
+           PROMISES
+        ========================== */
+
+        .promises {
+            background: #100b13;
+        }
+
+        .promise-list {
+            max-width: 700px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .promise {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 15px;
+        }
+
+        .promise-icon {
+            font-size: 1.5rem;
+        }
+
+        .promise p {
+            color: #d4cad5;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           ENVELOPE
+        ========================== */
+
+        .letter-section {
+            background:
+                radial-gradient(circle, #3b1027, #100b13 65%);
+        }
+
+        .envelope-wrapper {
+            margin: 50px auto;
+            width: 320px;
+            height: 220px;
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .envelope {
+            position: absolute;
+            inset: 0;
+            background: #d94f78;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: #ed7095;
+            clip-path: polygon(0 0, 50% 55%, 100% 0);
+            transform-origin: top;
+            transition: 0.8s;
+            z-index: 3;
+        }
+
+        .envelope.open::before {
+            transform: rotateX(180deg);
+        }
+
+        .letter {
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 10px;
+            height: 180px;
+            background: #fff8fb;
+            color: #4b2634;
+            padding: 25px;
+            border-radius: 5px;
+            transition: 0.8s;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .envelope.open .letter {
+            transform: translateY(-130px);
+        }
+
+        .letter h3 {
+            margin-bottom: 12px;
+            color: #d73565;
+        }
+
+        .letter p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .click-envelope {
+            color: #c9bdca;
+            margin-top: 20px;
+        }
+
+        /* =========================
+           FINAL
+        ========================== */
+
+        .final {
+            background:
+                radial-gradient(circle at center, #49152d, #0f0b14 65%);
+        }
+
+        .final h2 {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            margin-bottom: 20px;
+        }
+
+        .final p {
+            color: #d4c7d4;
+            max-width: 600px;
+            margin: auto auto 40px;
+            line-height: 1.8;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .yes-btn {
+            background: #ff4f81;
+        }
+
+        .time-btn {
+            background: #39313b;
+            box-shadow: none;
+        }
+
+        /* =========================
+           RESPONSE
+        ========================== */
+
+        #response {
+            display: none;
+            margin-top: 40px;
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.06);
+        }
+
+        #response h3 {
+            color: #ff7097;
+            margin-bottom: 10px;
+        }
+
+        #response p {
+            margin-bottom: 0;
+        }
+
+        /* =========================
+           MUSIC
+        ========================== */
+
+        .music-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: none;
+            background: #ff4f81;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(255,79,129,0.4);
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            section {
+                padding: 70px 15px;
+            }
+
+            .apology-card {
+                padding: 30px 20px;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .memory,
+            .memory:nth-child(even) {
+                width: 100%;
+                margin-left: 0;
+                padding-left: 35px;
+                text-align: left;
+            }
+
+            .love-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .envelope-wrapper {
+                width: 280px;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Hearts -->
+    <div class="hearts" id="hearts"></div>
+
+    <!-- Music -->
+    <!-- <button class="music-btn" id="musicBtn">🎵</button> -->
+
+    <!-- =================================
+         HERO
+    ================================== -->
+
+    <section class="hero">
+
+        <div class="container hero-content">
+
+            <div class="small-text">
+                A little something for you
+            </div>
+
+            <h1>
+                Hey <span id="herName">Love</span> ❤️
+            </h1>
+
+            <p>
+                I know things aren't perfect right now.
+                And instead of just saying "I'm sorry",
+                I wanted to make something for you.
+            </p>
+
+            <a href="#apology">
+                <button class="btn">
+                    Please give me 2 minutes ❤️
+                </button>
+            </a>
+
+            <div class="scroll-text">
+                ↓ Keep scrolling ↓
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         APOLOGY
+    ================================== -->
+
+    <section class="apology" id="apology">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                I Know I Hurt You.
+            </h2>
+
+            <p class="section-subtitle">
+                And I don't want to make excuses for it.
+            </p>
+
+            <div class="apology-card">
+
+                <p>
+                    Hello samruddhi madam
+                </p>
+                <p>
+I know me tula khup trass dhila on your birthday, I was not expecting me tasa vagel but i don't know kasa me tasa vagalo. Mala khup kharab vatay ki me tasa vaglo te pn birthday chya divshi, I am really really sorry for that me parat kadicha asa vagnar nhi ahe swear.   <span class="highlight">"I am sorry my batate"</span>
+                </p>
+
+                
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         MEMORIES
+    ================================== -->
+
+    <section class="memories">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                But Before That...
+            </h2>
+
+            <p class="section-subtitle">
+                I want to remember all the beautiful moments
+                we've shared.
+            </p>
+
+            <div class="timeline">
+
+                <!-- <div class="memory">
+
+                    <div class="memory-card">
+
+                        <h3>🌸 The Beginning</h3>
+
+                        <p>
+                            Do you remember apn agodar kasa bolayecho kasa bhandayecho?? Mala to period khup masta pani athavto
+                        </p>
+
+                    </div>
+
+                </div> -->
+
+
+                <div class="memory">
+
+                    <div class="memory-card">
+
+                        <h3>Do you remember our first date ?❤️ </h3>
+
+                        <p>
+                            Me black kapde ghatale hote ani tu one piece ghatala hota. I know theva me kay bolayecho nhi one piece sati (btw ata pn nhi kay bolat). Apn movie bagitale mg apn PAV-BHAJI pn khali. So to day na majhya sati one the besstttt day of my life ahe. I don't know about you 😅. But genuinely majja aleli. Thank you for that memory !!
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="memory">
+
+                    <div class="memory-card">
+
+                        <h3>✨ Today</h3>
+
+                        <p>
+                           Cut to today, Apn doghana yevda yevda olakhun ghetala ahe na vichuruchu naka. I know kadi tu rusanar , kadi tu masti karnar. So aata apn yevda pude alo ahe na all because of you madam sahab. So, Thank you for your efforts !!
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         THINGS I LOVE
+    ================================== -->
+
+    <section class="love">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Things I Love About You ❤️
+            </h2>
+
+            <p class="section-subtitle">
+                And no, this list isn't even close to complete.
+            </p>
+
+
+            <div class="love-grid">
+
+                <div class="love-card">
+
+                    <div class="emoji">
+                        😊
+                    </div>
+
+                    <p>
+                        Your smile
+                    </p>
+
+                </div>
+
+
+                <div class="love-card">
+
+                    <div class="emoji">
+                        😂
+                    </div>
+
+                    <p>
+                        Your laugh
+                    </p>
+
+                </div>
+
+
+                <div class="love-card">
+
+                    <div class="emoji">
+                        🫶
+                    </div>
+
+                    <p>
+                        The way you care
+                    </p>
+
+                </div>
+
+
+                <div class="love-card">
+
+                    <div class="emoji">
+                        🥺
+                    </div>
+
+                    <p>
+                        Your little reactions
+                    </p>
+
+                </div>
+
+
+                <div class="love-card">
+
+                    <div class="emoji">
+                        💕
+                    </div>
+
+                    <p>
+                        The way you make me feel
+                    </p>
+
+                </div>
+
+
+                <div class="love-card">
+
+                    <div class="emoji">
+                        🌎
+                    </div>
+
+                    <p>
+                        Simply... you.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         PROMISES
+    ================================== -->
+
+    <section class="promises">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                What I Promise
+            </h2>
+
+            <p class="section-subtitle">
+                Not impossible promises. Just things I genuinely
+                want to work on.
+            </p>
+
+
+            <div class="promise-list">
+
+                <div class="promise">
+
+                    <div class="promise-icon">
+                        ❤️
+                    </div>
+
+                    <p>
+                        I promise to listen to you instead of
+                        immediately becoming defensive.
+                    </p>
+
+                </div>
+
+
+                <div class="promise">
+
+                    <div class="promise-icon">
+                        🫂
+                    </div>
+
+                    <p>
+                        I promise to take your feelings seriously,
+                        even when I don't completely understand them.
+                    </p>
+
+                </div>
+
+
+                <div class="promise">
+
+                    <div class="promise-icon">
+                        💬
+                    </div>
+
+                    <p>
+                        I promise to communicate instead of
+                        letting problems grow silently.
+                    </p>
+
+                </div>
+
+
+                <div class="promise">
+
+                    <div class="promise-icon">
+                        🌱
+                    </div>
+
+                    <p>
+                        I promise to learn from my mistakes
+                        instead of simply apologizing for them.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         LETTER
+    ================================== -->
+
+    <section class="letter-section" style="display: none;">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                I Wrote You A Letter 💌
+            </h2>
+
+            <p class="section-subtitle">
+                Click the envelope.
+            </p>
+
+
+            <div class="envelope-wrapper" id="envelopeWrapper">
+
+                <div class="envelope">
+
+                    <div class="letter">
+
+                        <h3>Dear Love,</h3>
+
+                        <p>
+                            I'm sorry.
+                            Not just because we're having a difficult
+                            moment, but because I genuinely regret
+                            hurting someone who means so much to me.
+                        </p>
+
+                        <br>
+
+                        <p>
+                            I hope someday I can show you through
+                            my actions that this apology wasn't
+                            just words.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p class="click-envelope">
+                💌 Tap the envelope to open it
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         FINAL
+    ================================== -->
+
+    <section class="final">
+
+        <div class="container">
+
+            <h2>
+                One Last Thing...
+            </h2>
+
+            <p>
+                I am really really sorry for my behavior me kadicha parat asa vagnar nhi Tu ragavli tri pn me manvel tula !!! I am sorry And this small thing which i am doing to let you anger settle down. Hope you would love it. I love meri <s>jade</s> Jaan
+            </p>
+
+
+            <div class="buttons">
+
+                <button
+                    class="btn yes-btn"
+                    id="yesBtn">
+                    I Love you too ❤️
+                </button>
+
+                <button
+                    class="btn time-btn"
+                    id="timeBtn">
+                    Baghu
+                </button>
+
+            </div>
+
+
+            <div id="response">
+
+                <h3 id="responseTitle"></h3>
+
+                <p id="responseText"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script>
+
+        /* =========================
+           CHANGE HER NAME HERE
+        ========================== */
+
+        const herName = "Samruddhi";
+
+        document.getElementById("herName").textContent = herName;
+
+
+        /* =========================
+           FLOATING HEARTS
+        ========================== */
+
+        const heartsContainer =
+            document.getElementById("hearts");
+
+        function createHeart() {
+
+            const heart =
+                document.createElement("div");
+
+            heart.classList.add("heart");
+
+            const heartTypes =
+                ["❤️", "💕", "💗", "💖", "💘"];
+
+            heart.textContent =
+                heartTypes[
+                    Math.floor(
+                        Math.random() * heartTypes.length
+                    )
+                ];
+
+            heart.style.left =
+                Math.random() * 100 + "%";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 5) + "s";
+
+            heart.style.fontSize =
+                (12 + Math.random() * 20) + "px";
+
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        setInterval(createHeart, 1000);
+
+
+        /* =========================
+           ENVELOPE
+        ========================== */
+
+        const envelopeWrapper =
+            document.getElementById(
+                "envelopeWrapper"
+            );
+
+        const envelope =
+            document.querySelector(".envelope");
+            const letter = document.getElementsByClassName('letter')[0];
+
+        envelopeWrapper.addEventListener(
+            "click",
+            () => {
+
+                envelope.classList.toggle("open");
+            }
+        );
+
+
+        /* =========================
+           FINAL BUTTONS
+        ========================== */
+
+        const yesBtn =
+            document.getElementById("yesBtn");
+
+        const timeBtn =
+            document.getElementById("timeBtn");
+
+        const response =
+            document.getElementById("response");
+
+        const responseTitle =
+            document.getElementById(
+                "responseTitle"
+            );
+
+        const responseText =
+            document.getElementById(
+                "responseText"
+            );
+
+
+        yesBtn.addEventListener(
+            "click",
+            () => {
+
+                response.style.display =
+                    "block";
+
+                responseTitle.textContent =
+                    "🥺❤️ Thank You.";
+
+                responseText.textContent =
+                    "I promise I'll do my best to make this chance worth it.";
+
+                for (let i = 0; i < 30; i++) {
+
+                    setTimeout(
+                        createHeart,
+                        i * 100
+                    );
+
+                }
+
+            }
+        );
+
+
+        timeBtn.addEventListener(
+            "click",
+            () => {
+
+                response.style.display =
+                    "block";
+
+                responseTitle.textContent =
+                    "Chamat Deil. 👊";
+
+                responseText.textContent =
+                    "Option nhi hae bantai !!";
+
+            }
+        );
+
+
+        /* =========================
+           MUSIC BUTTON
+        ========================== */
+
+        const musicBtn =
+            document.getElementById(
+                "musicBtn"
+            );
+
+        /*
+            To add music:
+
+            1. Put a music file in the same folder.
+            2. Rename it to "song.mp3".
+            3. Uncomment the audio code below.
+        */
+
+        /*
+        const audio =
+            new Audio("song.mp3");
+
+        audio.loop = true;
+
+        musicBtn.addEventListener(
+            "click",
+            () => {
+
+                if (audio.paused) {
+
+                    audio.play();
+
+                    musicBtn.textContent =
+                        "🔊";
+
+                } else {
+
+                    audio.pause();
+
+                    musicBtn.textContent =
+                        "🎵";
+
+                }
+
+            }
+        );
+        */
+
+        musicBtn.addEventListener(
+            "click",
+            () => {
+
+                alert(
+                    "Add your favorite song as song.mp3 and enable the music code in JavaScript ❤️"
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
